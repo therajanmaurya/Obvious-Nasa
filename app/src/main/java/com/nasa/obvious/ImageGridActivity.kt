@@ -12,7 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.nasa.obvious.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class ImageGridActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
