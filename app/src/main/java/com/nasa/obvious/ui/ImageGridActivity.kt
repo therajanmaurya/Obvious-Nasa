@@ -1,4 +1,4 @@
-package com.nasa.obvious
+package com.nasa.obvious.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.nasa.obvious.R
 import com.nasa.obvious.databinding.ActivityImageGridBinding
 
 class ImageGridActivity : AppCompatActivity() {
