@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.nasa.obvious.databinding.FragmentSecondBinding
+import com.nasa.obvious.databinding.FragmentImageDetailBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class ImageDetailFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentImageDetailBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,10 +23,8 @@ class ImageDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentImageDetailBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

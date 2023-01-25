@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.nasa.obvious.databinding.FragmentFirstBinding
+import com.nasa.obvious.databinding.FragmentImageGridBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class ImageGridFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentImageGridBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,10 +23,8 @@ class ImageGridFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentImageGridBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
