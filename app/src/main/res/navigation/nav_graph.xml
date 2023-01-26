@@ -9,7 +9,7 @@
         android:id="@+id/FirstFragment"
         android:name="com.nasa.obvious.ui.ImageGridFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_image_grid">
+        tools:layout="@layout/fragment_image_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
