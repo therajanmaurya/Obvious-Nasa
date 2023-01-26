@@ -1,7 +1,6 @@
 package com.nasa.obvious.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,8 +28,12 @@ class ImageGridFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchNasaListImage()
+        val imageAdapter = ImageAdapter {
+
+        }
+        binding.rvNasa.adapter = imageAdapter
         viewModel.images.observe(viewLifecycleOwner) {
-            Log.v("dfd", "asfs")
+            it?.let { imageAdapter.submitList(it) }
         }
     }
 
