@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.nasa.obvious.R
 import com.nasa.obvious.databinding.FragmentImageListBinding
+import com.nasa.obvious.ui.adapter.ImageAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,20 +24,32 @@ class ImageGridFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentImageListBinding.inflate(inflater, container, false)
+        _binding = FragmentImageListBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@ImageGridFragment.viewLifecycleOwner
+            viewModel = this@ImageGridFragment.viewModel
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchNasaListImage()
         val imageAdapter = ImageAdapter {
-
+            viewModel.currentPosition = it
+            findNavController().navigate(R.id.action_ImageGridFragment_to_ImageViewPagerFragment)
         }
         binding.rvNasa.adapter = imageAdapter
+        loadNasaImages()
         viewModel.images.observe(viewLifecycleOwner) {
-            it?.let { imageAdapter.submitList(it) }
+            if (it?.first != null) {
+                imageAdapter.submitList(it.first)
+            }
         }
+        binding.btnRetry.setOnClickListener { loadNasaImages() }
+    }
+
+    private fun loadNasaImages() {
+        binding.llNoImageOrFailed.visibility = View.GONE
+        viewModel.fetchNasaListImage()
     }
 
     override fun onDestroyView() {
