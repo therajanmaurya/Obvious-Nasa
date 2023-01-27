@@ -1,4 +1,4 @@
-package com.nasa.obvious.ui
+package com.nasa.obvious.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,29 +7,23 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.nasa.obvious.R
 import com.nasa.obvious.models.Nasa
+import com.nasa.obvious.ui.binding.bindNasaImage
 
-class ImageAdapter(private val onClick: (Nasa) -> Unit) :
+class ImageAdapter(private val onClick: (Int) -> Unit) :
     ListAdapter<Nasa, ImageAdapter.ImageViewHolder>(NasaDiffCallback) {
 
-    class ImageViewHolder(itemView: View, val onClick: (Nasa) -> Unit) :
+    class ImageViewHolder(itemView: View, val onClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private val nasaImageView: ImageView = itemView.findViewById(R.id.ivNasa)
-        private var currentNasa: Nasa? = null
 
         init {
-            itemView.setOnClickListener {
-                currentNasa?.let { onClick(it) }
-            }
+            itemView.setOnClickListener { onClick(adapterPosition) }
         }
 
         fun bind(nasa: Nasa) {
-            currentNasa = nasa
-            Glide.with(nasaImageView.context)
-                .load(nasa.url)
-                .into(nasaImageView);
+            nasaImageView.bindNasaImage(nasa.url)
         }
     }
 
