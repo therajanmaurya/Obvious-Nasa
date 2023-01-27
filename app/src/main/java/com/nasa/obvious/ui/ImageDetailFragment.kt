@@ -5,35 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.nasa.obvious.R
 import com.nasa.obvious.databinding.FragmentImageDetailBinding
+import com.nasa.obvious.models.Nasa
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ImageDetailFragment : Fragment() {
-
-    private var _binding: FragmentImageDetailBinding? = null
-    private val binding get() = _binding!!
+class ImageDetailFragment(val nasa: Nasa) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentImageDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return FragmentImageDetailBinding.inflate(inflater, container, false).apply {
+            this.nasa = this@ImageDetailFragment.nasa
+        }.root
     }
 }
