@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/ivNasaPoster"
                 android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/image_poster_height"
                 nasaImage="@{nasa.hdurl}"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/backgrounds/scenic"
@@ -32,7 +32,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/cvDate"
+                android:id="@+id/tvDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@{nasa.title}"
-                android:textSize="24sp"
+                android:textSize="@dimen/text_size_24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
