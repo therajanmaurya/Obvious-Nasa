@@ -37,6 +37,7 @@
             tools:listitem="@layout/item_image" />
 
         <ProgressBar
+            android:id="@+id/progressView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.showProgress ? View.VISIBLE : View.GONE}"
@@ -58,6 +59,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tvEmptyOrFailedMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
